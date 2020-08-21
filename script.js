@@ -12,7 +12,14 @@ getStore();
 btn.addEventListener("click", addPage);
 containerPages.addEventListener("click", function(e){
 	if (e.target.tagName.toUpperCase() === "INPUT") {
-		e.target.parentNode.classList.toggle("checked");	
+		if (e.target.parentNode.classList.contains("checked")) {
+			e.target.parentNode.classList.remove("checked");
+			numberChecked--;
+		} else {
+			e.target.parentNode.classList.add("checked");
+			numberChecked++;
+		}
+		countPages();
 		setStore();
 	}
 })
@@ -28,6 +35,7 @@ function addPage(e) {
 		containerPages.appendChild(content);
 		setStore();
 	}
+	nbPages();
 	inputForm.value = "";
 }
 
@@ -35,6 +43,14 @@ function addPage(e) {
 // COUNT PAGE 
 function countPages(){
 	containerCount.innerHTML = `${numberChecked} / ${numberPages}`;
+}
+
+
+// UPDATE NB PAGES
+function nbPages() {
+	const elem = containerPages.querySelectorAll(".page");
+	numberPages = elem.length;
+	countPages();
 }
 
 
@@ -51,8 +67,5 @@ function getStore() {
 	numberChecked = checked.length;
 	checked.forEach(input => input.checked = true);
 	
-	const elem = containerPages.querySelectorAll(".page");
-	numberPages = elem.length;
-	
-	countPages();
+	nbPages();
 }
