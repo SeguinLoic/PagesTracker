@@ -1,15 +1,19 @@
 const formulaire = document.getElementById("formPages");
 const inputForm = formulaire.querySelector("#nomPage");
-const btn = formulaire.querySelector("button");
 const containerPages = document.querySelector(".container-pages");
 const containerCount = document.querySelector(".count-pages");
+const deleteProject = document.querySelector(".delete");
 let numberPages = 0;
 let numberChecked = 0;
 getStore();
 
 
 // --- EVENT LISTENER
-btn.addEventListener("click", addPage);
+formulaire.addEventListener("submit", addPage);
+deleteProject.addEventListener("click", function() {
+	localStorage.removeItem("items");
+	getStore();
+});
 containerPages.addEventListener("click", function(e){
 	if (e.target.tagName.toUpperCase() === "INPUT") {
 		if (e.target.parentNode.classList.contains("checked")) {
@@ -31,7 +35,8 @@ function addPage(e) {
 	if (inputForm.value !== "") {
 		const content = document.createElement("div");
 		content.classList.add("page");
-		content.innerHTML = `<span class='titlePage'>${inputForm.value}</span><input type="checkbox"/>`;
+		let idInput = inputForm.value.toLowerCase().split("").filter(letter => /\S/.test(letter)).join("");
+		content.innerHTML = `<input type="checkbox" id="${idInput}"/><label for="${idInput}" class='titlePage'>${inputForm.value}</label>`;
 		containerPages.appendChild(content);
 		setStore();
 	}

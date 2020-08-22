@@ -2,24 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;1,400&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/4ad13589b0.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
     <title>Work Tracker</title>
 </head>
 <body>
 
     <div class="container">
-		<h1>Nombe de pages ?</h1>
-		
-		<form id="formPages">
-		<label for="nomPage">Nom de la page</label>
-		<input type="text" id="nomPage"/>
-		<button>Envoyer</button>
-		</form>
-		
+		<h1>Nombre de pages ?</h1>
+		<div class="blocForm">
+			<form id="formPages">
+				<input type="text" id="nomPage" placeholder="Nom de la page"/>
+			</form>
+			<button class="delete"><i class="far fa-trash-alt"></i></button>
+		</div>
 		<div class="container-pages"></div>
 		<div class="count-pages"></div>
-		
     </div>
 
       <script src="script.js"></script>
