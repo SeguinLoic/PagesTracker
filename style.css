@@ -57,8 +57,8 @@ body {
 
 /* -------------- CONTAINER DE PAGES ------------- */
 .container-pages {
-    padding-bottom: 25px;
-    padding-top: 25px;
+    padding: 5px 0px;
+    margin: 25px 0px;
     max-height: 500px;
     overflow-y: scroll;
 }
