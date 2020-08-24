@@ -59,6 +59,8 @@ body {
 .container-pages {
     padding-bottom: 25px;
     padding-top: 25px;
+    max-height: 500px;
+    overflow-y: scroll;
 }
 .container-pages .page input {
     margin: 0px !important;
